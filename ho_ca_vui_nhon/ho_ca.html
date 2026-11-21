@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <title>Hồ cá vui nhộn</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="mystyle.css">
+</head>
+
+<body>
+  <a class="home-link" href="../index.html">&larr; Trang chủ</a>
+  <h1>Hồ cá vui nhộn</h1>
+
+  <div id="content" class="bg1">
+    <div id="controls">
+      <button id="btnBg" type="button">🌊 Đổi cảnh nền</button>
+      <button id="btnMusic" type="button">🎵 Phát nhạc</button>
+      <button id="btnPause" type="button">⏸ Tạm dừng</button>
+    </div>
+
+    <!-- Đàn cá -->
+    <div id="faintSchool"><img src="images/faintSchool.png" alt="Đàn cá xanh"></div>
+    <div id="goldFish"><img src="images/goldFishSchool.png" alt="Đàn cá vàng"></div>
+
+    <!-- Cá mập và rùa -->
+    <div id="shark"><img src="images/shark.png" alt="Cá mập"></div>
+    <div id="turtle"><img src="images/turtle.png" alt="Rùa biển"></div>
+
+    <!-- Ba thợ lặn: lặn xuống và lên -->
+    <div id="diver1" class="diver">
+      <img src="images/diver1.png" alt="Thợ lặn 1">
+      <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span>
+    </div>
+    <div id="diver2" class="diver">
+      <img src="images/diver2.png" alt="Thợ lặn 2">
+      <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span>
+    </div>
+    <div id="diver3" class="diver">
+      <img src="images/diver3.png" alt="Thợ lặn 3">
+      <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span>
+    </div>
+
+    <!-- Bong bóng nổi từ đáy biển (chỉ đi lên) -->
+    <span class="sea-bubble s1"></span>
+    <span class="sea-bubble s2"></span>
+    <span class="sea-bubble s3"></span>
+    <span class="sea-bubble s4"></span>
+    <span class="sea-bubble s5"></span>
+
+    <p id="sceneName">Cảnh: Biển xanh ban ngày</p>
+    <audio id="bgm" src="music/nhac_nen.mp3" loop></audio>
+  </div>
+
+  <script>
+    var scenes = [
+      { cls: "bg1", name: "Biển xanh ban ngày" },
+      { cls: "bg2", name: "Hoàng hôn trên biển" },
+      { cls: "bg3", name: "Biển đêm" },
+      { cls: "bg4", name: "Rạn san hô" }
+    ];
+    var sceneIndex = 0;
+    var content = document.getElementById("content");
+    var sceneName = document.getElementById("sceneName");
+
+    document.getElementById("btnBg").onclick = function () {
+      content.classList.remove(scenes[sceneIndex].cls);
+      sceneIndex = (sceneIndex + 1) % scenes.length;
+      content.classList.add(scenes[sceneIndex].cls);
+      sceneName.textContent = "Cảnh: " + scenes[sceneIndex].name;
+    };
+
+    var bgm = document.getElementById("bgm");
+    var btnMusic = document.getElementById("btnMusic");
+
+    btnMusic.onclick = function () {
+      if (bgm.paused) {               // nhạc đang dừng -> phát
+        bgm.play();
+        btnMusic.textContent = "🔇 Ngừng nhạc";
+      } else {                        // nhạc đang phát -> dừng
+        bgm.pause();
+        btnMusic.textContent = "🎵 Phát nhạc";
+      }
+      btnMusic.classList.toggle("active", !bgm.paused);
+    };
+
+    var btnPause = document.getElementById("btnPause");
+    btnPause.onclick = function () {
+      var paused = content.classList.toggle("paused");
+      btnPause.textContent = paused ? "▶ Tiếp tục" : "⏸ Tạm dừng";
+      btnPause.classList.toggle("active", paused);
+    };
+  </script>
+</body>
+</html>

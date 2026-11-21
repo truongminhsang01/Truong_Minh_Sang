@@ -1,0 +1,257 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #06223d;
+  color: #fff;
+  overflow-x: auto;
+}
+
+h1 {
+  width: 1000px;
+  margin: 0 auto 12px;
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.home-link {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 20;
+  padding: 7px 14px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  background: rgba(0, 40, 80, 0.7);
+}
+.home-link:hover { background: #ff9f1c; }
+
+#content {
+  position: relative;
+  width: 1000px;
+  height: 560px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 6px solid #0f3a5e;
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.6s;
+}
+
+#content.bg1 { background-image: url("images/bg1.png"); }
+#content.bg2 { background-image: url("images/bg2.png"); }
+#content.bg3 { background-image: url("images/bg3.png"); }
+#content.bg4 { background-image: url("images/bg4.png"); }
+
+#content img { display: block; }
+
+#controls {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+}
+
+#controls button {
+  padding: 8px 14px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  background: rgba(0, 40, 80, 0.55);
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+#controls button:hover  { background: rgba(0, 90, 160, 0.8); }
+#controls button:active { transform: scale(0.95); }
+#controls button.active { background: #ff9f1c; border-color: #ffe0a8; }
+
+#sceneName {
+  position: absolute;
+  left: 12px;
+  bottom: 4px;
+  margin: 0;
+  z-index: 10;
+  font-size: 13px;
+  text-shadow: 0 1px 3px #000;
+}
+
+#content.paused,
+#content.paused * { animation-play-state: paused !important; }
+
+#shark {
+  left: 0px; top: 60px;
+  position: absolute;
+  z-index: 4;
+  animation-name: Shark;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+@keyframes Shark {
+  0%     { left: 0px;   top: 60px;  transform: scaleX(1); }
+  20%    { left: 300px; top: 120px; transform: scaleX(1); }
+  35%    { left: 520px; top: 40px;  transform: scaleX(1); }
+  49.9%  { left: 750px; top: 90px;  transform: scaleX(1); }   
+  50%    { left: 750px; top: 90px;  transform: scaleX(-1); }  
+  70%    { left: 450px; top: 180px; transform: scaleX(-1); }
+  85%    { left: 200px; top: 100px; transform: scaleX(-1); }
+  99.9%  { left: 0px;   top: 60px;  transform: scaleX(-1); }  
+  100%   { left: 0px;   top: 60px;  transform: scaleX(1); }   
+}
+
+#turtle {
+  position: absolute;
+  left: 828px; top: 250px;
+  z-index: 3;
+  animation: Turtle 32s linear -6s infinite;
+}
+
+@keyframes Turtle {
+  0%     { left: 0px;   top: 250px; transform: scaleX(1); }
+  25%    { left: 400px; top: 210px; transform: scaleX(1); }
+  49.9%  { left: 828px; top: 260px; transform: scaleX(1); }
+  50%    { left: 828px; top: 260px; transform: scaleX(-1); }
+  75%    { left: 400px; top: 300px; transform: scaleX(-1); }
+  99.9%  { left: 0px;   top: 250px; transform: scaleX(-1); }
+  100%   { left: 0px;   top: 250px; transform: scaleX(1); }
+}
+
+#goldFish {
+  position: absolute;
+  z-index: 2;
+  animation: GoldFish 16s linear -3s infinite;
+}
+
+@keyframes GoldFish {
+  0%     { left: 0px;   top: 180px; transform: scaleX(1); }
+  25%    { left: 440px; top: 140px; transform: scaleX(1); }
+  49.9%  { left: 875px; top: 200px; transform: scaleX(1); }
+  50%    { left: 875px; top: 200px; transform: scaleX(-1); }
+  75%    { left: 440px; top: 240px; transform: scaleX(-1); }
+  99.9%  { left: 0px;   top: 180px; transform: scaleX(-1); }
+  100%   { left: 0px;   top: 180px; transform: scaleX(1); }
+}
+
+#faintSchool {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.85;
+  animation: FaintSchool 20s linear infinite;
+}
+
+@keyframes FaintSchool {
+  0%     { left: 767px; top: 70px;  transform: scaleX(1); }
+  25%    { left: 380px; top: 110px; transform: scaleX(1); }
+  49.9%  { left: 0px;   top: 60px;  transform: scaleX(1); }
+  50%    { left: 0px;   top: 60px;  transform: scaleX(-1); }
+  75%    { left: 380px; top: 30px;  transform: scaleX(-1); }
+  99.9%  { left: 767px; top: 70px;  transform: scaleX(-1); }
+  100%   { left: 767px; top: 70px;  transform: scaleX(1); }
+}
+
+.diver {
+  position: absolute;
+  width: 299px;
+  height: 147px;
+  z-index: 5;
+}
+
+#diver1 { animation: Diver1 22s ease-in-out infinite; }
+#diver2 { animation: Diver2 28s ease-in-out -9s infinite; }
+#diver3 { animation: Diver3 18s ease-in-out -4s infinite; }
+
+@keyframes Diver1 {   /* lặn sâu dần rồi ngoi lên */
+  0%     { left: 0px;   top: 80px;  transform: scaleX(1); }
+  25%    { left: 350px; top: 330px; transform: scaleX(1); }
+  49.9%  { left: 701px; top: 140px; transform: scaleX(1); }
+  50%    { left: 701px; top: 140px; transform: scaleX(-1); }
+  75%    { left: 350px; top: 380px; transform: scaleX(-1); }
+  99.9%  { left: 0px;   top: 80px;  transform: scaleX(-1); }
+  100%   { left: 0px;   top: 80px;  transform: scaleX(1); }
+}
+
+@keyframes Diver2 {   /* bơi sát đáy, thỉnh thoảng ngoi lên */
+  0%     { left: 0px;   top: 360px; transform: scaleX(1); }
+  20%    { left: 280px; top: 220px; transform: scaleX(1); }
+  35%    { left: 500px; top: 380px; transform: scaleX(1); }
+  49.9%  { left: 701px; top: 300px; transform: scaleX(1); }
+  50%    { left: 701px; top: 300px; transform: scaleX(-1); }
+  70%    { left: 420px; top: 160px; transform: scaleX(-1); }
+  85%    { left: 200px; top: 390px; transform: scaleX(-1); }
+  99.9%  { left: 0px;   top: 360px; transform: scaleX(-1); }
+  100%   { left: 0px;   top: 360px; transform: scaleX(1); }
+}
+
+@keyframes Diver3 {   /* lặn lên xuống liên tục */
+  0%     { left: 0px;   top: 200px; transform: scaleX(1); }
+  12.5%  { left: 175px; top: 40px;  transform: scaleX(1); }
+  25%    { left: 350px; top: 300px; transform: scaleX(1); }
+  37.5%  { left: 525px; top: 60px;  transform: scaleX(1); }
+  49.9%  { left: 701px; top: 250px; transform: scaleX(1); }
+  50%    { left: 701px; top: 250px; transform: scaleX(-1); }
+  62.5%  { left: 525px; top: 380px; transform: scaleX(-1); }
+  75%    { left: 350px; top: 120px; transform: scaleX(-1); }
+  87.5%  { left: 175px; top: 340px; transform: scaleX(-1); }
+  99.9%  { left: 0px;   top: 200px; transform: scaleX(-1); }
+  100%   { left: 0px;   top: 200px; transform: scaleX(1); }
+}
+
+.bubble {
+  position: absolute;
+  left: 262px;          
+  top: 40px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.25);
+  opacity: 0;
+  animation: DiverBubble 2.4s ease-out infinite;
+}
+.bubble.b2 { width: 7px;  height: 7px;  animation-delay: 0.8s; left: 268px; }
+.bubble.b3 { width: 12px; height: 12px; animation-delay: 1.6s; left: 258px; }
+
+@keyframes DiverBubble {
+  0%   { transform: translate(0, 0);     opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { transform: translate(6px, -60px); }
+  100% { transform: translate(-4px, -130px); opacity: 0; }
+}
+
+.sea-bubble {
+  position: absolute;
+  bottom: -20px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 6;
+  animation: SeaBubble 7s ease-in infinite;
+}
+.sea-bubble.s1 { left: 90px;  animation-duration: 7s;  }
+.sea-bubble.s2 { left: 260px; animation-duration: 9s;  animation-delay: 2s; width: 9px;  height: 9px; }
+.sea-bubble.s3 { left: 480px; animation-duration: 6s;  animation-delay: 4s; width: 18px; height: 18px; }
+.sea-bubble.s4 { left: 690px; animation-duration: 10s; animation-delay: 1s; }
+.sea-bubble.s5 { left: 900px; animation-duration: 8s;  animation-delay: 3s; width: 11px; height: 11px; }
+
+@keyframes SeaBubble {
+  0%   { bottom: -20px; transform: translateX(0);    opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { transform: translateX(12px); }
+  100% { bottom: 580px; transform: translateX(-8px); opacity: 0; }
+}

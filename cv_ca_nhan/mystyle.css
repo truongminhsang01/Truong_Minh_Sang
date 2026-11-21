@@ -1,0 +1,173 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark: #2d3440;      
+  --accent: #f2a541;    
+  --text: #333;
+  --muted: #777;
+}
+
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background: #dfe3e8;
+  color: var(--text);
+  line-height: 1.55;
+  padding: 60px 15px 30px;
+}
+
+.home-link {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 20;
+  padding: 7px 14px;
+  border-radius: 20px;
+  background: var(--dark);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.home-link:hover { background: var(--accent); }
+
+#cv {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+}
+
+#left  { width: 40%; background: var(--dark); color: #e9ecef; padding: 35px 30px; }
+#right { width: 60%; padding: 40px 40px; }
+
+.avatar { text-align: center; margin-bottom: 25px; }
+.avatar img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--accent);
+}
+
+#left section { margin-bottom: 26px; }
+
+#left h2 {
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #fff;
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+  border-bottom: 2px solid var(--accent);
+}
+#left h2 i { color: var(--accent); margin-right: 6px; }
+
+#left ul { list-style: none; }
+
+.contact li { margin-bottom: 9px; font-size: 14.5px; word-break: break-word; }
+.contact i  { width: 22px; color: var(--accent); }
+
+.skill-name { font-size: 14px; margin-bottom: 4px; }
+.bar {
+  height: 8px;
+  background: #4a5361;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.bar span { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+
+.dots li { font-size: 14px; margin-bottom: 6px; padding-left: 16px; position: relative; }
+.dots li::before {            /* ký hiệu đặc biệt ▸ làm dấu đầu dòng */
+  content: "\25B8";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.hobbies { display: flex; flex-wrap: wrap; gap: 8px; }
+.hobbies li {
+  font-size: 13.5px;
+  padding: 5px 11px;
+  border: 1px solid #5c6675;
+  border-radius: 15px;
+}
+.hobbies i { color: var(--accent); margin-right: 4px; }
+
+.ref p { font-size: 14px; margin-bottom: 6px; }
+.ref-title { font-weight: bold; color: #fff; }
+.ref i { width: 22px; color: var(--accent); }
+.blank {
+  display: inline-block;
+  width: 60%;
+  border-bottom: 1px dotted #aab2bd;
+  vertical-align: bottom;
+}
+
+#right header {
+  border-bottom: 3px solid var(--dark);
+  padding-bottom: 14px;
+  margin-bottom: 26px;
+}
+
+#right h1 {
+  font-size: 40px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--dark);
+  line-height: 1.15;
+}
+
+.position {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+}
+.position i { margin-right: 6px; }
+
+#right section { margin-bottom: 26px; }
+
+#right h2 {
+  font-size: 19px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+#right h2::after {           
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ccc;
+}
+
+#right p { text-align: justify; font-size: 15px; }
+
+.item { margin-bottom: 16px; }
+.item h3 { font-size: 16px; color: #222; }
+.item h3 i { color: var(--accent); margin-right: 6px; }
+.item .sub { color: var(--muted); font-style: italic; font-size: 14.5px; margin-bottom: 6px; }
+
+.item ul { padding-left: 20px; }
+.item li { font-size: 14.5px; margin-bottom: 6px; text-align: justify; }
+
+@media (max-width: 700px) {
+  #cv { flex-direction: column; }
+  #left, #right { width: 100%; }
+  #right h1 { font-size: 30px; }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  #cv { box-shadow: none; }
+  .home-link { display: none; }
+  #left { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
